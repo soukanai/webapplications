@@ -33,7 +33,7 @@ LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
 <?php
     $dsn = 'mysql:host=localhost;dbname=latinwordorigins';
     $username = 'root';
-    $password = '2230';
+    $password = '****';
     if ($_POST) {
         try {
             $dbh = new PDO($dsn, $username, $password);
