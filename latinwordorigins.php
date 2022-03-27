@@ -1,4 +1,4 @@
-LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
+<!-- LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。 -->
 
 <!DOCTYPE html>
 <html>
