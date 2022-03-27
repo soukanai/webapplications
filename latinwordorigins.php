@@ -1,4 +1,4 @@
-<!-- LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。 -->
+LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。 
 
 <!DOCTYPE html>
 <html>
@@ -6,9 +6,8 @@
     <html lang="ja">
     <meta charset="utf-8">
     <title>Latin Word Origins</title>
-        <!-- Bootstrap CSS -->
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 
 <body>
@@ -26,7 +25,7 @@
 					<th>語源</th>
 					<th>意味</th>
 					<th>種類</th>
-                    <th>使用例</th>
+                                        <th>使用例</th>
 				</tr>
 			</thead>
             <tbody>
