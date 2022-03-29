@@ -5,14 +5,6 @@ LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
 <head>
     <html lang="ja">
     <meta charset="utf-8">
-    <title>Latin Word Origins</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<!DOCTYPE html>
-<html>
-<head>
-    <html lang="ja">
-    <meta charset="utf-8">
     <title>ラテン語源検索</title>
         <!-- Bootstrap CSS -->
         <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -66,10 +58,12 @@ LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
     $username = 'root';
     $password = '2230';
 
-    if ($_POST) {
+    if (isset($_POST['keyword'])) {
         try {
 
             $dbh = new PDO($dsn, $username, $password);
+            $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
             $searchWord = $_POST['keyword'];
 
             if($searchWord==""){
@@ -116,7 +110,7 @@ LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
      </div>
     </div>
 
-<form action="add.php" method="post">
+<form action="" method="post">
     <div class="form-group col-5">
         <input type="text" name="insertedword" placeholder="語源を半角英字で入力して下さい" class="form-control"/>
     </div>
@@ -136,20 +130,47 @@ LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
                     <input type="text" name="insertedexample" placeholder="使用例を入力して下さい" class="form-control"/>
     </div>
     <div class="form-group col-5">
-    　　    <input type="submit" value="追加" class="form-control"/>
+    　　    <input type="submit" name="add" value="追加" class="form-control"/>
     </div>
 
 </form>
 
-<?php 
+<?php
 
-echo "<center>teag</center>";
+if(isset($_POST['add'])) {
+
+    try {
+
+    $dbh2 = new PDO($dsn, $username, $password);
+    $dbh2->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $insertedWord = $_POST['insertedword'];
+    $insertedMeaning = $_POST['insertedmeaning'];
+    $insertedType = $_POST['insertedtype'];
+    $insertedExample = $_POST['insertedexample'];
+
+    $sql2 = "INSERT INTO lwolist (wordorigin, wordmeaning, wordtype, wordexample) VALUES (:wordorigin, :wordmeaning, :wordtype, :wordexample)"; 
+    $stmt2 = $dbh2->prepare($sql2); 
+    $params = array(':wordorigin' => $insertedWord, ':wordmeaning' => $insertedMeaning, ':wordtype' => $insertedType, ':wordexample' => $insertedExample);
+    $stmt2->execute($params);
+
+    echo "<center>語源「".$insertedWord."」に「".$insertedMeaning."」という意味の「".$insertedType."」が使用例「".$insertedExample."」としてデータベースに追加されました！</center>";
+
+    } catch (PDOException $e) {
+
+    exit('データベースに接続できませんでした。' . $e->getMessage());
+
+    }
+
+} else {
+
+    echo "<center>入力エラーが有りました</center>";
+
+}
+
 
 ?>
-
-<br>
-    <h7>Copyright © 2022 Sou Kanai</h7>
-    <br>
+	    
 </center>
 </body>
 </html>
