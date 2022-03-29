@@ -66,7 +66,7 @@ LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
 
             $searchWord = $_POST['keyword'];
 
-            if($searchWord==""){
+            if($searchWord == "" || $searchWord == " "){
 
               echo "<td>語源を入力して下さい</td>";
 
@@ -154,7 +154,7 @@ if(isset($_POST['add'])) {
     $params = array(':wordorigin' => $insertedWord, ':wordmeaning' => $insertedMeaning, ':wordtype' => $insertedType, ':wordexample' => $insertedExample);
     $stmt2->execute($params);
 
-    echo "<center>語源「".$insertedWord."」に「".$insertedMeaning."」という意味の「".$insertedType."」が使用例「".$insertedExample."」としてデータベースに追加されました！</center>";
+    echo "<center>語源「".$insertedWord."」という「".$insertedMeaning."」という意味の「".$insertedType."」が使用例「".$insertedExample."」としてデータベースに追加されました！</center>";
 
     } catch (PDOException $e) {
 
