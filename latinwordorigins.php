@@ -9,13 +9,16 @@ LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
         <!-- Bootstrap CSS -->
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="shortcut icon" href="img\favicon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400&display=swap" rel="stylesheet"> 
         <style>
-        body {
-            background: #f3f3f3;
-            font-family: 'Noto Sans JP', sans-serif;
-        }
-    </style>
+            body {
+                background: #f3f3f3;
+        font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+        </style>
+        <link rel="shortcut icon" href="img\favicon.png">
     </head>
 
 <body>
@@ -35,7 +38,7 @@ LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
                 <input type="text" name="keyword" placeholder="単語を入力して下さい" class="form-control"/>
         </div>
         <div class="form-group col-5">
-                <input type="submit" value="検索" class="form-control"/>
+        <input type="submit" value="検索" class="btn btn-primary form-control"/>
         </div>
         </form>
     </div>
@@ -130,7 +133,7 @@ LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
                     <input type="text" name="insertedexample" placeholder="使用例を入力して下さい" class="form-control"/>
     </div>
     <div class="form-group col-5">
-    　　    <input type="submit" name="add" value="追加" class="form-control"/>
+    　　    <input type="submit" name="add" value="追加" class="btn btn-primary form-control"/>
     </div>
 
 </form>
@@ -170,7 +173,10 @@ if(isset($_POST['add'])) {
 
 
 ?>
-	    
+
+<br>
+    <h7>Copyright © 2022 Sou Kanai</h7>
+    <br>
 </center>
 </body>
 </html>
