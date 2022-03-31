@@ -3,54 +3,59 @@ LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
 <!DOCTYPE html>
 <html>
 <head>
+
     <html lang="ja">
     <meta charset="utf-8">
     <title>ラテン語源検索</title>
-        <!-- Bootstrap CSS -->
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400&display=swap" rel="stylesheet"> 
-        <style>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400&display=swap" rel="stylesheet"> 
+    <style>
             body {
-                background: #f3f3f3;
         font-family: 'M PLUS Rounded 1c', sans-serif;
+    }
+
+    img {
+    border-radius: 30px;
 }
-        </style>
+    </style>
         <link rel="shortcut icon" href="img\favicon.png">
-    </head>
+
+</head>
 
 <body>
+<div class="p-3 mb-2 bg-light text-dark">
     <center>
-
-    <div class="container mt-5 pt-5">
-     <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h3 class="mb-5 text-center">ラテン語源検索</h3>
+    <img src="img\top.png" alt="top" width="300" height="300">
+        <div class="container mt-5 pt-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3 class="mb-5 text-center">ラテン語源検索</h3>
+            </div>
         </div>
-     </div>
-    </div>
-
-    <div class="mb-5">
-        <form action="" method="POST">
-        <div class="form-group col-5">
-                <input type="text" name="keyword" placeholder="単語を入力して下さい" class="form-control"/>
         </div>
-        <div class="form-group col-5">
-        <input type="submit" value="検索" class="btn btn-primary form-control"/>
-        </div>
-        </form>
-    </div>
 
-    <div class="col-xs-6 col-xs-offset-3">
-		<table class="table">
+        <div class="mb-5">
+            <form action="" method="POST">
+            <div class="form-group col-5">
+                    <input type="text" name="keyword" placeholder="語源を半角英字で入力して下さい" class="form-control"/>
+            </div>
+            <div class="form-group col-5">
+            <input type="submit" value="検索" class="btn btn-primary form-control"/>
+            </div>
+            </form>
+        </div>
+
+    <div class="col-10 ml-3">
+		<table class="table table-hover table-bordered">
 			<thead>
 				<tr>
-					<th>語源</th>
-					<th>意味</th>
-					<th>種類</th>
-                    <th>使用例</th>
+					<th class="table-primary">語源</th>
+					<th class="table-secondary">意味</th>
+					<th class="table-success">種類</th>
+                    <th class="table-danger">使用例</th>
 				</tr>
 			</thead>
             <tbody>
@@ -59,7 +64,7 @@ LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
 
     $dsn = 'mysql:host=localhost;dbname=lwotable';
     $username = 'root';
-    $password = '****';
+    $password = '2230';
 
     if (isset($_POST['keyword'])) {
         try {
@@ -71,7 +76,7 @@ LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
 
             if($searchWord == "" || $searchWord == " "){
 
-              echo "<td>語源を入力して下さい</td>";
+              echo "<td>検索フォームに語源を半角英字で入力して下さい</td>";
 
             }
             else{
@@ -105,7 +110,7 @@ LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
     </tbody>
 </table>
 
-<div class="container mt-5 pt-5">
+<div class="container mt-5 pt-3">
      <div class="row">
         <div class="col-md-6 offset-md-3">
             <h3 class="mb-5 text-center">ラテン語源追加</h3>
@@ -173,10 +178,20 @@ if(isset($_POST['add'])) {
 
 
 ?>
+<div class="container mt-5 pt-3">
+     <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3 class="mb-5 text-center">ラテン語源検索（LINEボット版）</h3>
+        </div>
+     </div>
+    </div>
 
-<br>
-    <h7>Copyright © 2022 Sou Kanai</h7>
-    <br>
+<img src="https://qr-official.line.me/sid/M/602bpvjy.png?shortenUrl=true">
+
+<div class="container mt-3 pt-3">
+    <h7>Copyright © 2022 金井　想</h7>
+</div>
 </center>
+</div>
 </body>
 </html>
