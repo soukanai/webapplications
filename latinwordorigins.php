@@ -68,6 +68,7 @@ LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
     $password = '*****';
 
     if (isset($_POST['keyword'])) {
+	    // MySQLデータベースへ接続
         try {
 
             $dbh = new PDO($dsn, $username, $password);
@@ -80,8 +81,9 @@ LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
               echo "<td>検索フォームに語源を半角英字で入力して下さい</td>";
 
             }
+		
             else{
-
+　　　　　　　　　// SQL文を実行（テーブルから検索ワードと一致するデータを取得）
                 $sql ="select * from lwotable where wordorigin like '".$searchWord."%'";
                 $sth = $dbh->prepare($sql);
                 $sth->execute();
@@ -90,7 +92,7 @@ LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
                 if($result){
 
                     foreach ($result as $row) {
-
+                        //取得したデータからそれぞれの値を取り出し表示
                         echo "<td>".$row['wordorigin']."</td><td>".$row['wordmeaning']."</td><td>".$row['wordtype']."</td><td>".$row['wordexample']."</td>";
                         
                     }
@@ -152,15 +154,17 @@ LINEボット「Latin Word Origins」のWeb版です（PHP・MySQL・HTML）。
 if(isset($_POST['add'])) {
 
     try {
-
+　　 // MySQLデータベースへ接続
     $dbh2 = new PDO($dsn, $username, $password);
     $dbh2->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+	    
+// 入力フォームから受け取ったデータを変数へ格納
     $insertedWord = $_POST['insertedword'];
     $insertedMeaning = $_POST['insertedmeaning'];
     $insertedType = $_POST['insertedtype'];
     $insertedExample = $_POST['insertedexample'];
-
+	    
+    // それぞれのデータをテーブルへ追加
     $sql2 = "INSERT INTO lwolist (wordorigin, wordmeaning, wordtype, wordexample) VALUES (:wordorigin, :wordmeaning, :wordtype, :wordexample)"; 
     $stmt2 = $dbh2->prepare($sql2); 
     $params = array(':wordorigin' => $insertedWord, ':wordmeaning' => $insertedMeaning, ':wordtype' => $insertedType, ':wordexample' => $insertedExample);
