@@ -1,7 +1,3 @@
-//個人的な英語学習の為に書いた簡単なLINEボットです。
-//ボットに接頭語・接尾語を喋ると意味と使用例を返答します。
-
-
 var CHANNEL_ACCESS_TOKEN = '1GjJyvsCXpISQ1Sz7w0bOKoyHGclqCQap3+VLymXPWl87f7Li3nan/p+h56amVR6GDPjBtI3YRcvlGaap2+Av/5Zus0BqV+mpyXe4ZueLV7vypkhqemeoghNdWkD2du/hykqNbdlLdrAgXYZbCIJlQdB04t89/1O/w1cDnyilFU='; 
 var line_endpoint = 'https://api.line.me/v2/bot/message/reply';
 
