@@ -66,7 +66,7 @@
     $password = '*****';
 
     if (isset($_POST['keyword'])) {
-	    // MySQLデータベースへ接続
+
         try {
 
             $dbh = new PDO($dsn, $username, $password);
@@ -81,7 +81,7 @@
             }
 		
             else{
-　　　　　　　　　// SQL文を実行（テーブルから検索ワードと一致するデータを取得）
+
                 $sql ="select * from lwotable where wordorigin like '".$searchWord."%'";
                 $sth = $dbh->prepare($sql);
                 $sth->execute();
@@ -90,7 +90,7 @@
                 if($result){
 
                     foreach ($result as $row) {
-                        //取得したデータからそれぞれの値を取り出し表示
+
                         echo "<td>".$row['wordorigin']."</td><td>".$row['wordmeaning']."</td><td>".$row['wordtype']."</td><td>".$row['wordexample']."</td>";
                         
                     }
